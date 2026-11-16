@@ -1,0 +1,33 @@
+{
+  "name": "dsh-fish-home",
+  "version": "0.1.0",
+  "description": "鱼的日常：把有出处的共同经历留成小窝里的一件物品。",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./package.json": "./package.json"
+  },
+  "files": ["index.js", "client.js", "lib", "cordis.patch.yml", "README.md", "LICENSE"],
+  "scripts": {
+    "test": "node --test --test-isolation=none test/*.test.mjs",
+    "check": "node --check index.js && node --check lib/store.js && node --check lib/web.js && node --check lib/tools.js && node --check lib/panel.js && node --check client.js"
+  },
+  "engines": { "node": ">=22" },
+  "keywords": ["dsh-plugin", "deepseek-harness", "companion", "fish-home"],
+  "license": "MIT",
+  "dsh": {
+    "compatibility": { "dsh": "0.2.1-rc.5", "profiles": ["web", "desktop"] },
+    "bundle": { "patch": "./cordis.patch.yml" },
+    "client": {
+      "inject": ["connection", "runtime", "ui-settings", "ui-slots", "locale"],
+      "platform": "web"
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": ">=4.0.4 <5.0.0",
+    "@deepseek-ai/dsh-system-prompt": "0.2.1-rc.5",
+    "@deepseek-ai/dsh-tools": "0.2.1-rc.5"
+  }
+}

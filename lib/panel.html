@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>鱼的日常 · 大肥鱼的小窝</title>
+  <link rel="stylesheet" href="/plugins/dsh-fish-home/panel.css">
+  <script src="/plugins/dsh-fish-home/panel.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到小窝内容</a>
+  <div class="home-shell">
+    <header class="masthead">
+      <div class="home-brand">
+        <svg class="fish-mark" viewBox="0 0 90 68" fill="none" aria-hidden="true" focusable="false">
+          <path d="M69 29 85 19 82 46 68 40" fill="#d7e4d6" stroke="currentColor" stroke-width="2.3" stroke-linejoin="round"/>
+          <path d="M69 34C69 51 54 59 36 56 16 54 6 42 10 28 14 13 33 9 49 14 63 18 69 24 69 34Z" fill="#e4eadb" stroke="currentColor" stroke-width="2.3"/>
+          <path d="m35 46 10-8 5 10M23 17l5-9 9 7" fill="#c7d7c1" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          <circle cx="24" cy="30" r="2.3" fill="currentColor"/><path d="m14 37 7 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M52 27c4 3 4 8 0 11" stroke="#a9bca5" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <div><p class="eyebrow">大肥鱼的小窝</p><h1>鱼的日常<span class="title-dot" aria-hidden="true">·</span></h1></div>
+      </div>
+      <div class="header-note"><span class="sun-dot" aria-hidden="true"></span>给一起走过的日子，留一点位置。</div>
+    </header>
+
+    <section class="welcome" aria-labelledby="welcome-title">
+      <div><p class="eyebrow">慢慢住，慢慢记</p><h2 id="welcome-title">每件小物，都有来处。</h2><p>一盆植物、一本书，或一张舍不得丢的票根。<br class="wide-only">点开它，就能回到那段真实发生过的日常。</p></div>
+      <div class="welcome-aside"><p class="fish-aside">“哼，本鱼只是……<br>给重要的日子腾了个地方。”</p><p id="home-count" class="count-note">正在看看小窝……</p></div>
+    </section>
+
+    <section class="preferences" aria-label="小窝设置">
+      <div class="injection-option"><button id="enabled-toggle" class="switch" type="button" role="switch" aria-checked="false" aria-labelledby="injection-label" aria-describedby="injection-help" disabled><span aria-hidden="true"></span></button><div><span id="injection-label" class="option-label">让本鱼在聊天时想起小窝</span><p id="injection-help">只控制提示注入；关闭后仍能查看、编辑和导出。</p></div></div>
+      <a id="export-link" class="text-link" href="/plugins/dsh-fish-home/export" download="fish-home.json">导出完整 JSON</a>
+    </section>
+
+    <main id="main" tabindex="-1">
+      <div class="view-heading"><div class="tabs" role="tablist" aria-label="小窝视图"><button type="button" id="room-tab" role="tab" aria-selected="true" aria-controls="room-view" tabindex="0">逛逛小窝</button><button type="button" id="journal-tab" role="tab" aria-selected="false" aria-controls="journal-view" tabindex="-1">共同事件簿</button></div><button id="add-item" type="button" class="button primary" disabled><span aria-hidden="true">＋</span>添一件小物</button></div>
+      <div class="toolbar"><div class="search-field"><label for="search">找一段日常</label><div class="search-box"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg><input id="search" type="search" placeholder="标题、故事或原话……" autocomplete="off"><button id="clear-search" type="button" class="clear-search" hidden>清除</button></div></div><div id="archive-filter-wrap" class="archive-filter" hidden><label for="archive-filter">查看范围</label><select id="archive-filter"><option value="active">正在摆放</option><option value="archived">已归档</option><option value="all">全部日常</option></select></div><button id="refresh" class="button quiet refresh-button" type="button" disabled>刷新</button></div>
+      <p id="capacity-note" class="capacity-note"></p>
+      <div id="loading" class="loading-state" role="status"><span class="loading-dot" aria-hidden="true"></span><p>开窗，给小窝透透气……<span>正在读取日常</span></p></div>
+      <div id="page-error" class="notice error" role="alert" hidden><p id="page-error-text"></p><button id="retry" type="button" class="button quiet">重新读取</button></div>
+      <p id="page-notice" class="notice" role="status" hidden></p>
+
+      <section id="room-view" role="tabpanel" aria-labelledby="room-tab" aria-busy="true" tabindex="0">
+        <div id="first-home" class="first-home" hidden><div><h3>小窝空空的，日子还长。</h3><p>这里还没有物件。等真的一起经历了什么，再为它留个位置。也可以亲手补记一段真实的日常。</p></div><button id="first-add" type="button" class="button quiet" data-mutation-control>补记第一段日常</button></div>
+        <p id="room-search-empty" class="empty-search" hidden>没有找到这段日常。试试别的词，或去事件簿看看已归档的记录。</p>
+        <div class="room-grid">
+          <section class="room-zone zone-windowsill" aria-labelledby="windowsill-title"><div class="zone-heading"><div><span class="zone-number" aria-hidden="true">01</span><h3 id="windowsill-title">窗台</h3></div><button class="zone-add" type="button" data-add-spot="windowsill" data-mutation-control aria-label="在窗台添一件小物" disabled>＋</button></div><div class="window-drawing" aria-hidden="true"><div></div><span></span></div><div id="items-windowsill" class="zone-items"></div><p id="empty-windowsill" class="zone-empty" hidden>把有阳光的日子，留在这里。</p><div class="wood-ledge" aria-hidden="true"></div></section>
+          <section class="room-zone zone-wall" aria-labelledby="wall-title"><div class="zone-heading"><div><span class="zone-number" aria-hidden="true">02</span><h3 id="wall-title">墙上</h3></div><button class="zone-add" type="button" data-add-spot="wall" data-mutation-control aria-label="在墙上添一件小物" disabled>＋</button></div><div class="wall-hanger" aria-hidden="true"></div><div id="items-wall" class="zone-items"></div><p id="empty-wall" class="zone-empty" hidden>这一面墙，等值得回看的瞬间。</p></section>
+          <section class="room-zone zone-desk" aria-labelledby="desk-title"><div class="zone-heading"><div><span class="zone-number" aria-hidden="true">03</span><h3 id="desk-title">桌边</h3></div><button class="zone-add" type="button" data-add-spot="desk" data-mutation-control aria-label="在桌边添一件小物" disabled>＋</button></div><div id="items-desk" class="zone-items"></div><p id="empty-desk" class="zone-empty" hidden>桌子擦好了，慢慢添些日常。</p><div class="desk-drawing" aria-hidden="true"></div></section>
+          <section class="room-zone zone-shelf" aria-labelledby="shelf-title"><div class="zone-heading"><div><span class="zone-number" aria-hidden="true">04</span><h3 id="shelf-title">书架</h3></div><button class="zone-add" type="button" data-add-spot="shelf" data-mutation-control aria-label="在书架添一件小物" disabled>＋</button></div><div id="items-shelf" class="zone-items"></div><p id="empty-shelf" class="zone-empty" hidden>空一格，给以后想珍藏的东西。</p><div class="shelf-drawing" aria-hidden="true"></div></section>
+        </div>
+        <p class="room-caption">点小物看看来历。小窝里最多摆 16 件，其余日常可以归档收好。</p>
+      </section>
+
+      <section id="journal-view" role="tabpanel" aria-labelledby="journal-tab" tabindex="0" hidden><div class="journal-intro"><h2>共同事件簿</h2><p>故事慢慢写，原话好好收。归档的日常，也一直在。</p></div><p id="journal-count" class="count-note"></p><div id="journal-items" class="journal-items"></div><div id="journal-empty" class="journal-empty" hidden><svg viewBox="0 0 120 90" aria-hidden="true" focusable="false"><path d="M20 17q20-8 40 3 20-11 40-3v56q-22-6-40 3-18-9-40-3Z" fill="#f5edda" stroke="currentColor" stroke-width="2"/><path d="M60 20v55M30 34l18 1m-18 10 15 1m26-12 17-1m-17 12 20-1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><h3 id="journal-empty-title">还没有写下日常</h3><p id="journal-empty-text">从一段真实发生过的经历开始吧。</p></div></section>
+    </main>
+    <footer class="home-footer"><span>小窝不编造回忆，物件只为真实的经历而来。</span><span>只归档，不永久删除。</span></footer>
+  </div>
+  <p id="live-message" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
+
+  <dialog id="detail-dialog" aria-labelledby="detail-title" class="detail-dialog">
+    <div class="dialog-top"><span id="detail-source-badge" class="source-badge"></span><button id="detail-close" type="button" class="close-button" aria-label="关闭物件来历">×</button></div><div class="detail-heading"><div id="detail-icon" class="detail-icon" aria-hidden="true"></div><div><p id="detail-meta" class="eyebrow"></p><h2 id="detail-title"></h2><p id="detail-date" class="count-note"></p></div></div><p id="detail-archived" class="archived-note" hidden>这件小物已归档，仍然保留在共同事件簿中。</p><section class="detail-section"><h3>这件小物的故事</h3><p id="detail-story" class="prose"></p></section><section class="detail-section provenance"><h3>来历与原话</h3><p id="detail-source-note"></p><blockquote id="detail-quote"></blockquote><dl id="detail-provenance"></dl></section><p id="detail-save-time" class="fine-print"></p><p id="detail-error" class="notice error" role="alert" hidden></p><div class="dialog-actions"><button id="detail-edit" type="button" class="button primary" data-mutation-control>编辑小物</button><button id="detail-archive" type="button" class="button quiet" data-mutation-control>收进归档</button></div>
+  </dialog>
+
+  <dialog id="editor-dialog" aria-labelledby="editor-title" class="editor-dialog">
+    <form id="item-form"><div class="dialog-top"><span id="editor-source-badge" class="source-badge">手动补记</span><button id="editor-close" type="button" class="close-button" aria-label="关闭编辑表单">×</button></div><h2 id="editor-title">给日常留个位置</h2><p id="editor-help" class="editor-help">写下一段真实的经历，选件小物替它作纪念。带 * 的项目必填。</p><div class="form-field"><label for="item-title">小物的名字 <span aria-hidden="true">*</span></label><input id="item-title" name="title" required maxlength="40" autocomplete="off" placeholder="你想怎样称呼这件小物？"></div><div class="form-row"><div class="form-field"><label for="item-kind">物件种类 <span aria-hidden="true">*</span></label><select id="item-kind" name="kind" required></select></div><div class="form-field"><label for="item-spot">摆放位置 <span aria-hidden="true">*</span></label><select id="item-spot" name="spot" required></select></div></div><div class="form-field"><label for="item-story">故事 <span aria-hidden="true">*</span></label><textarea id="item-story" name="story" rows="5" required maxlength="1200" placeholder="发生了什么？这件小物为什么让你想起那一天？" aria-describedby="story-help"></textarea><p id="story-help" class="field-help">最多 1200 字。故事与下面保存的来源原话分开。</p></div><div id="manual-source-fields"><div class="form-field"><label for="item-quote">原话摘录 <span aria-hidden="true">*</span></label><textarea id="item-quote" name="quote" rows="3" required maxlength="800" placeholder="把这段经历的原话，原样写在这里。" aria-describedby="quote-help"></textarea><p id="quote-help" class="field-help">最多 800 字。手动填写的摘录会标为「手动补记」，不会冒充聊天来源。</p></div><div class="form-field"><label for="item-date">事件日期（可留空）</label><input id="item-date" name="happenedOn" type="date" aria-describedby="date-help"><p id="date-help" class="field-help">不记得日期就留空，不必猜一个。</p></div></div><section id="conversation-source-fields" class="locked-source" hidden><h3>聊天来源 · 保留原样</h3><p>这件小物来自真实对话。这里只能编辑名字、故事、种类和位置；原话、来源和事件日期保持原样。</p><blockquote id="editor-original-quote"></blockquote><p id="editor-original-date" class="fine-print"></p></section><p id="editor-error" class="notice error" role="alert" hidden></p><div class="dialog-actions"><button id="editor-submit" class="button primary" type="submit">放进小窝</button><button id="editor-cancel" class="button quiet" type="button">先不写了</button></div></form>
+  </dialog>
+  <noscript><p class="notice error">小窝需要启用 JavaScript 才能读取和保存日常。</p></noscript>
+</body>
+</html>

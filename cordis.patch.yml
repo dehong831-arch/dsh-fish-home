@@ -1,0 +1,3 @@
+- insert:
+    - id: plugin-fish-home
+      name: 'dsh-fish-home'

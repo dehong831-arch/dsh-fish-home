@@ -1,0 +1,23 @@
+# Local verification tools, browser profiles and synthetic data
+.verification/
+.test-home-*/
+node_modules/
+
+# Generated installation archives and logs
+*.tgz
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Local environment and runtime data
+.env
+.env.*
+!.env.example
+.dsh/
+fish-home/
+
+# OS and editor state
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
