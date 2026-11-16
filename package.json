@@ -9,14 +9,22 @@
     "./client": "./client.js",
     "./package.json": "./package.json"
   },
-  "files": ["index.js", "client.js", "lib", "cordis.patch.yml", "README.md", "LICENSE"],
+  "files": ["index.js", "client.js", "lib", "cordis.patch.yml", "README.md", "LICENSE", "screenshots.json"],
   "scripts": {
     "test": "node --test --test-isolation=none test/*.test.mjs",
     "check": "node --check index.js && node --check lib/store.js && node --check lib/web.js && node --check lib/tools.js && node --check lib/panel.js && node --check client.js"
   },
-  "engines": { "node": ">=22" },
+  "engines": { "node": ">=22", "dsh": ">=0.2.1-rc.5" },
   "keywords": ["dsh-plugin", "deepseek-harness", "companion", "fish-home"],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dehong831-arch/dsh-fish-home.git"
+  },
+  "homepage": "https://github.com/dehong831-arch/dsh-fish-home#readme",
+  "bugs": {
+    "url": "https://github.com/dehong831-arch/dsh-fish-home/issues"
+  },
   "dsh": {
     "compatibility": { "dsh": "0.2.1-rc.5", "profiles": ["web", "desktop"] },
     "bundle": { "patch": "./cordis.patch.yml" },
